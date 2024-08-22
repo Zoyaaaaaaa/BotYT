@@ -66,8 +66,8 @@ export function SummaryForm() {
 
                 const result = await response.json();
                 if (response.ok) {
-                    setAnswer(result.data); // Set the answer
-                    setSummary(null); // Clear the summary if applicable
+                    setAnswer(result.data); 
+                    setSummary(null); 
                 } else {
                     throw new Error(result.error || "Unknown error occurred");
                 }
@@ -99,7 +99,7 @@ export function SummaryForm() {
     function generateYouTubeLink(videoId: string | null, timestamp: number): string {
         if (!videoId) {
             console.error("Video ID is missing.");
-            return "#"; // Return a placeholder URL or handle the error appropriately
+            return "#"; 
         }
         return `https://www.youtube.com/watch?v=${videoId}&t=${Math.round(timestamp)}`;
     }
@@ -111,60 +111,65 @@ export function SummaryForm() {
     }
 
     return (
-        <div className="w-full max-w-[70vw] md:max-w-[80vw] lg:max-w-[70vw] mx-auto bg-[#0a192f] text-white p-8 rounded-lg shadow-lg overflow-y-auto">
-            <h1 className="text-4xl font-bold text-center mb-8 text-[#1f73ff]">
-                YouTube Video Summary Generator 🤖
+        <div className="w-full max-w-[90vw] md:max-w-[80vw] lg:max-w-[70vw] mx-auto">
+            <div className="text-center p-4 md:p-8">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#1f73ff] mb-6 md:mb-12 leading-tight">
+            Video Insight Generator 🤖
             </h1>
-            <p className="text-lg text-gray-400 mb-8">
-                Welcome to the YouTube Video Summary Generator! This tool allows you to:
-                <ul className="list-disc list-inside mt-2 space-y-2">
-                    <li>
-                        <strong className="text-[#1f73ff]">Get a summary</strong> of any YouTube video by providing its URL or ID.
-                    </li>
-                    <li>
-                        <strong className="text-[#1f73ff]">Ask specific questions</strong> about the video's content to get detailed answers.
-                    </li>
-                    <li>
-                        <strong className="text-[#1f73ff]">Search within the transcript</strong> of the video for specific keywords.
-                    </li>
-                </ul>
+            <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-12">
+                Welcome to the Video Insight Generator! This tool allows you to:
+            </p>
+            <ul className="list-disc list-inside space-y-4 text-left max-w-3xl mx-auto mb-8">
+                <li className="text-lg md:text-xl">
+                <strong className="text-[#1f73ff] font-semibold">Get a summary</strong> of any YouTube video by providing its URL or ID.
+                </li>
+                <li className="text-lg md:text-xl">
+                <strong className="text-[#1f73ff] font-semibold">Ask specific questions</strong> about the video's content to get detailed answers.
+                </li>
+                <li className="text-lg md:text-xl">
+                <strong className="text-[#1f73ff] font-semibold">Search within the transcript</strong> of the video for specific keywords.
+                </li>
+            </ul>
+            <p className="text-lg text-gray-300">
                 Just input the video URL or ID, select an action, and let us handle the rest!
             </p>
+            </div>
+
             <form onSubmit={handleFormSubmit} className="space-y-6">
-                <div className="flex flex-col md:flex-row justify-between mb-6 space-y-4 md:space-y-0">
-                    <Button
-                        onClick={() => setSelectedAction("summary")}
-                        className={cn(
-                            "flex-1 py-3 px-5 rounded-lg transition-colors duration-300",
-                            selectedAction === "summary"
-                                ? "bg-[#1f73ff] text-white"
-                                : "bg-[#002d72] text-gray-400 hover:bg-[#1f73ff] hover:text-white"
-                        )}
-                    >
-                        Get Summary
-                    </Button>
-                    <Button
-                        onClick={() => setSelectedAction("question")}
-                        className={cn(
-                            "flex-1 py-3 px-5 rounded-lg transition-colors duration-300",
-                            selectedAction === "question"
-                                ? "bg-[#1f73ff] text-white"
-                                : "bg-[#002d72] text-gray-400 hover:bg-[#1f73ff] hover:text-white"
-                        )}
-                    >
-                        Ask a Question
-                    </Button>
-                    <Button
-                        onClick={() => setSelectedAction("search")}
-                        className={cn(
-                            "flex-1 py-3 px-5 rounded-lg transition-colors duration-300",
-                            selectedAction === "search"
-                                ? "bg-[#1f73ff] text-white"
-                                : "bg-[#002d72] text-gray-400 hover:bg-[#1f73ff] hover:text-white"
-                        )}
-                    >
-                        Search Transcript
-                    </Button>
+                <div className="flex flex-col md:flex-row justify-between mb-6 space-y-4 md:space-y-0 md:space-x-4">
+                <Button
+                    onClick={() => setSelectedAction("summary")}
+                    className={cn(
+                    "flex-1 py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105",
+                    selectedAction === "summary"
+                        ? "bg-[#1f73ff] text-white shadow-md"
+                        : "bg-[#002d72] text-gray-300 hover:bg-[#1f73ff] hover:text-white"
+                    )}
+                >
+                    Get Summary
+                </Button>
+                <Button
+                    onClick={() => setSelectedAction("question")}
+                    className={cn(
+                    "flex-1 py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105",
+                    selectedAction === "question"
+                        ? "bg-[#1f73ff] text-white shadow-md"
+                        : "bg-[#002d72] text-gray-300 hover:bg-[#1f73ff] hover:text-white"
+                    )}
+                >
+                    Ask a Question
+                </Button>
+                <Button
+                    onClick={() => setSelectedAction("search")}
+                    className={cn(
+                    "flex-1 py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105",
+                    selectedAction === "search"
+                    ? "bg-[#1f73ff] text-white shadow-md"
+                        : "bg-[#002d72] text-gray-300 hover:bg-[#1f73ff] hover:text-white"
+                    )}
+                >
+                    Search Transcript
+                </Button>
                 </div>
 
                 <Input
@@ -176,32 +181,36 @@ export function SummaryForm() {
                     required
                 />
 
-                {selectedAction === "question" && (
-                    <div className="mt-4">
-                        <label className="block text-gray-300">Ask a question about the video:</label>
-                        <Input
-                            name="customQuestion"
-                            placeholder="e.g., What is the key message?"
-                            value={customQuestion}
-                            onChange={(e) => setCustomQuestion(e.target.value)}
-                            className="w-full mt-2 bg-[#001d3d] text-white placeholder-gray-500 border-transparent rounded-lg"
-                        />
-                        <div className="mt-4">
-                            <label className="block text-gray-300">Suggested Questions:</label>
-                            <ul className="list-disc list-inside mt-2 text-gray-400 space-y-2">
-                                {suggestedQuestions.map((question, index) => (
-                                    <li
-                                        key={index}
-                                        className="cursor-pointer hover:text-[#1f73ff]"
-                                        onClick={() => setCustomQuestion(question)}
-                                    >
-                                        {question}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                )}
+            {selectedAction === "question" && (
+            <div className="mt-6 p-6 bg-gradient-to-br from-[#001d3d] to-[#003366] rounded-xl shadow-lg">
+                <label className="block text-white font-semibold text-xl mb-3">
+                Ask a question about the video:
+                </label>
+                <Input
+                name="customQuestion"
+                placeholder="e.g., What is the key message?"
+                value={customQuestion}
+                onChange={(e) => setCustomQuestion(e.target.value)}
+                className="w-full p-4 bg-[#0a2a52] text-white placeholder-gray-400 border-2 border-transparent focus:border-[#1f73ff] focus:ring-2 focus:ring-[#1f73ff] rounded-lg transition-all duration-300 ease-in-out"
+                />
+                <div className="mt-6">
+                <label className="block text-white font-semibold text-xl mb-3">
+                    Suggested Questions:
+                </label>
+                <ul className="list-disc list-inside mt-4 space-y-4 text-gray-300">
+                    {suggestedQuestions.map((question, index) => (
+                    <li
+                        key={index}
+                        className="cursor-pointer hover:text-[#1f73ff] hover:underline transition-all duration-200 transform hover:scale-100"
+                        onClick={() => setCustomQuestion(question)}
+                    >
+                        {question}
+                    </li>
+                    ))}
+                </ul>
+                </div>
+            </div>
+            )}
 
                 {selectedAction === "search" && (
                     <div className="mt-4">
@@ -243,7 +252,7 @@ export function SummaryForm() {
                 </div>
             )}
 
-            {error && <p className="text-red-500 mt-4">{error}</p>}
+            
             {summary && (
                 <div className="mt-8">
                     <h2 className="text-2xl font-bold mb-4">Video Summary:</h2>
@@ -258,28 +267,37 @@ export function SummaryForm() {
                 </div>
             )}
             {searchResults.length > 0 && (
-                <div className="mt-8 p-6 bg-[#0a192f] rounded-lg shadow-lg">
-                    <h2 className="text-3xl font-bold mb-6 text-[#1f73ff]">Search Results:</h2>
-                    <ul className="space-y-4">
-                        {searchResults.map((result, index) => (
-                            <li key={index} className="p-4 bg-[#1c2a48] rounded-lg border border-[#1f73ff] transition-transform transform hover:scale-105 hover:bg-[#1e293b] shadow-md">
-                                <a
-                                    href={generateYouTubeLink(videoId, result.timestamp)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex justify-between items-center text-[#1f73ff] hover:text-[#60a5fa] font-medium"
-                                >
-                                    <span>{result.text}</span>
-                                    <span className="text-gray-400 text-sm ml-4">
-                                        (at {formatTimestamp(result.timestamp)})
-                                    </span>
-                                    <span className="text-[#1f73ff] font-semibold ml-4">Watch</span>
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+    <div className="mt-8 p-4 md:p-6 lg:p-8 bg-[#0a192f] rounded-lg shadow-lg">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#1f73ff]">
+            Search Results:
+        </h2>
+        <ul className="space-y-4">
+            {searchResults.map((result, index) => (
+                <li key={index} className="p-3 md:p-4 lg:p-6 bg-[#1c2a48] rounded-lg border border-[#1f73ff] transition-transform transform hover:scale-105 hover:bg-[#1e293b] shadow-md">
+                    <a
+                        href={generateYouTubeLink(videoId, result.timestamp)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-col md:flex-row justify-between items-start md:items-center text-[#1f73ff] hover:text-[#60a5fa] font-medium"
+                    >
+                        <span className="text-white text-sm md:text-base font-bold ml-0 md:ml-4">
+                            {formatTimestamp(result.timestamp)} :
+                        </span>
+                        <span className="text-white text-sm md:text-base">
+                            {result.text}
+                        </span>
+                        
+                        <span className="text-[#1f73ff] font-semibold mt-2 md:mt-0 md:ml-4">
+                            Watch
+                        </span>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+)}
+
+            {error && <p className="text-red-500 mt-4">{error}</p>}
         </div>
     );
 }
