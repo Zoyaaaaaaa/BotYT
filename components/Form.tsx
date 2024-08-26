@@ -114,7 +114,7 @@ export function SummaryForm({ userId }: SummaryFormProps) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId, videoId: value, question: customQuestion }),
                 });
-    
+              
                 const result = await response.json();
                 if (response.ok) {
                     setAnswer(result.data);
@@ -212,146 +212,161 @@ export function SummaryForm({ userId }: SummaryFormProps) {
     )}
 >
     <span className="relative">
-        <span className="absolute inset-0 bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] blur-lg opacity-75 transition-opacity duration-300"></span>
-        <span className="relative z-10">Get Summary</span>
+        <span className="absolute inset-0 bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] rounded-lg filter blur-lg opacity-75"></span>
+        <span className="relative">Generate Summary</span>
     </span>
 </Button>
 
-<Button
-    onClick={() => setSelectedAction("question")}
-    className={cn(
-        "flex-1 py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:shadow-xl",
-        selectedAction === "question"
-            ? "bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] text-white shadow-md"
-            : "bg-gradient-to-r from-[#001f4d] to-[#002d72] text-gray-300 hover:from-[#1f73ff] hover:to-[#3b82f6] hover:text-white"
-    )}
->
-    <span className="relative">
-        <span className="absolute inset-0 bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] blur-lg opacity-75 transition-opacity duration-300"></span>
-        <span className="relative z-10">Ask a Question</span>
-    </span>
-</Button>
                     <Button
-                    onClick={() => setSelectedAction("search")}
-                    className={cn(
-                        "flex-1 py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:shadow-xl",
-                        selectedAction === "search"
-                            ? "bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] text-white shadow-md"
-                            : "bg-gradient-to-r from-[#001f4d] to-[#002d72] text-gray-300 hover:from-[#1f73ff] hover:to-[#3b82f6] hover:text-white"
-                    )}
-                >
-                    <span className="relative">
-                        <span className="absolute inset-0 bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] blur-lg opacity-75 transition-opacity duration-300"></span>
-                        <span className="relative z-10">Search Transcript</span>
-                    </span>
-                </Button>
-
+                        onClick={() => setSelectedAction("question")}
+                        className={cn(
+                            "flex-1 py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:shadow-xl",
+                            selectedAction === "question"
+                                ? "bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] text-white shadow-md"
+                                : "bg-gradient-to-r from-[#001f4d] to-[#002d72] text-gray-300 hover:from-[#1f73ff] hover:to-[#3b82f6] hover:text-white"
+                        )}
+                    >
+                        Ask a Question
+                    </Button>
+                 
+                    <Button
+                        onClick={() => setSelectedAction("search")}
+                        className={cn(
+                            "flex-1 py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:shadow-xl",
+                            selectedAction === "search"
+                                ? "bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] text-white shadow-md"
+                                : "bg-gradient-to-r from-[#001f4d] to-[#002d72] text-gray-300 hover:from-[#1f73ff] hover:to-[#3b82f6] hover:text-white"
+                        )}
+                    >
+                        Search Transcript
+                    </Button>
                 </div>
 
-                <Input
-                    name="videoId"
-                    placeholder="Enter YouTube Video URL or ID"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                    className="w-full"
-                    required
-                />
-                
-
-
-                {selectedAction === "question" && (
+                <div className="space-y-6">
                     <Input
-                        name="customQuestion"
-                        placeholder="Enter your custom question"
-                        value={customQuestion}
-                        onChange={(e) => setCustomQuestion(e.target.value)}
-                        className="w-full"
+                        type="text"
+                        placeholder="Enter YouTube video URL or ID"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                        className="w-full p-4 rounded-lg bg-[#001f4d] border border-[#003580] text-gray-300 focus:ring-[#1f73ff]"
                         required
                     />
-                )}
 
-                {selectedAction === "search" && (
-                    <Input
-                        name="searchKeyword"
-                        placeholder="Enter keyword to search in transcript"
-                        value={searchKeyword}
-                        onChange={(e) => setSearchKeyword(e.target.value)}
-                        className="w-full"
-                        required
-                    />
-                )}
-
-                <Button
-                    type="submit"
-                    className="w-full py-3 px-6 rounded-lg bg-[#1f73ff] text-white shadow-md hover:bg-[#002d72] transition-transform duration-300 transform hover:scale-105"
-                    disabled={loading}
-                >
-                    {loading ? <Skeleton className="h-4 w-32" /> : "Submit"}
-                </Button>
-            </form>
-            {videoId && (
-    <div className="mt-6">
-        <iframe
-            width="100%"
-            height="315"
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-72 mt-4 rounded-lg shadow-lg"
-        ></iframe>
-    </div>
-)}
-{loading && (
-    <div className="mt-8">
-        <Skeleton className="h-48 w-full bg-gray-700 rounded-lg" />
-    </div>
-)}
-
-            
-
-            {summary && (
-    <div className="mt-8 p-6 bg-[#f5f7fa] rounded-lg shadow-lg border border-[#d1d5db]">
-        <h2 className="text-3xl font-bold mb-5 text-[#1f2937]">Summary:</h2>
-        <div className="prose prose-lg leading-relaxed text-[#374151]">
-            <Markdown text={summary} />
+{selectedAction === "question" && (
+    <>
+        <Input
+            type="text"
+            placeholder="Enter your question"
+            value={customQuestion}
+            onChange={(e) => setCustomQuestion(e.target.value)}
+            className="w-full p-4 rounded-lg bg-[#001f4d] border border-[#003580] text-gray-300 focus:ring-[#1f73ff]"
+            required
+        />
+        
+        <div className="mt-8 p-4 bg-gray-900 text-gray-300 rounded-lg">
+            <h2 className="text-xl font-semibold mb-4">Suggested Questions:</h2>
+            <ul className="list-disc list-inside space-y-2">
+                {suggestedQuestions.map((question, index) => (
+                    <li
+                        key={index}
+                        className="text-lg cursor-pointer hover:text-[#1f73ff]"
+                        onClick={() => setCustomQuestion(question)}
+                    >
+                        {question}
+                    </li>
+                ))}
+            </ul>
         </div>
-    </div>
+    </>
 )}
 
-            {answer && (
-                <div className="mt-6">
-                    <h2 className="text-2xl font-semibold mb-4">Answer:</h2>
-                    <p><Markdown text={answer}/></p>
+
+                    {selectedAction === "search" && (
+                        <Input
+                            type="text"
+                            placeholder="Enter a keyword to search in the transcript"
+                            value={searchKeyword}
+                            onChange={(e) => setSearchKeyword(e.target.value)}
+                            className="w-full p-4 rounded-lg bg-[#001f4d] border border-[#003580] text-gray-300 focus:ring-[#1f73ff]"
+                            required
+                        />
+                    )}
+
+                    <Button
+                        type="submit"
+                        className={cn(
+                            "w-full py-3 px-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:shadow-xl",
+                            "bg-gradient-to-r from-[#1f73ff] to-[#3b82f6] text-white"
+                        )}
+                        disabled={loading}
+                    >
+                        {loading ? "Processing..." : "Submit"}
+                    </Button>
+                 
+
+                </div>
+            </form>
+            
+            {/* {error && <div className="mt-6 text-center text-red-500">{error}</div>} */}
+            
+            {videoId && (
+            <div className="mt-6">
+                <iframe
+                    width="100%"
+                    height="315"
+                    src={`https://www.youtube.com/embed/${videoId}`}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-72 mt-4 rounded-lg shadow-lg"
+                ></iframe>
+            </div>
+        )}
+
+
+
+            {loading && (
+                <div className="mt-6 space-y-4">
+                    <Skeleton className="h-8 w-2/3 mx-auto" />
+                    <Skeleton className="h-8 w-1/2 mx-auto" />
+                    <Skeleton className="h-8 w-3/4 mx-auto" />
                 </div>
             )}
 
-{searchResults.map((result, index) => (
-               <li
-               key={index}
-               className="p-2 md:p-3 lg:p-4 m-2 bg-[#1c2a48] rounded-lg border border-[#1f73ff] transition-transform transform hover:scale-105 hover:bg-[#1e293b] shadow-md"
-           >
-                    <a
-                        href={generateYouTubeLink(videoId, result.timestamp)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-col md:flex-row justify-between items-start md:items-center text-[#1f73ff] hover:text-[#60a5fa] font-medium"
-                    >
-                        <span className="text-white text-sm md:text-base font-bold ml-0 md:ml-4">
-                            {formatTimestamp(result.timestamp)} :
-                        </span>
-                        <span className="text-white text-sm md:text-base">
-                            {result.text}
-                        </span>
-                        
-                        <span className="text-[#1f73ff] font-semibold mt-2 md:mt-0 md:ml-4">
-                            Watch
-                        </span>
-                    </a>
-                </li>
-            ))}
-            {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+            {summary && (
+                <div className="mt-6 bg-[#001f4d] border border-[#003580] rounded-lg p-6">
+                    <h2 className="text-2xl font-bold text-[#1f73ff] mb-4">Summary:</h2>
+                    <Markdown text={summary} />
+                </div>
+            )}
+
+            {answer && (
+                <div className="mt-6 bg-[#001f4d] border border-[#003580] rounded-lg p-6">
+                    <h2 className="text-2xl font-bold text-[#1f73ff] mb-4">Answer:</h2>
+                    <Markdown text={answer} />
+                </div>
+            )}
+
+            {searchResults.length > 0 && (
+                <div className="mt-6">
+                    <h2 className="text-2xl font-bold text-[#1f73ff] mb-4">Search Results:</h2>
+                    <ul className="space-y-4">
+                        {searchResults.map((result, index) => (
+                            <li key={index} className="bg-[#001f4d] border border-[#003580] rounded-lg p-4">
+                                <p className="text-gray-300 mb-2">{result.text}</p>
+                                <a
+                                    href={generateYouTubeLink(videoId, result.timestamp)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[#1f73ff] hover:underline"
+                                >
+                                    Go to {formatTimestamp(result.timestamp)}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 }

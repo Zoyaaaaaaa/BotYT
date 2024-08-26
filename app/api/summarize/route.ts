@@ -55,12 +55,7 @@ export async function generateSummary(link: string, customQuestion: string = "")
                    - Use a friendly, conversational tone in the first person.
                 
                 3. **📹 Video Description:**
-                   - **Heading**: Write a catchy heading for the video.
-                   - **Sections**: Organize the description into clear, informative sections.
-                   - **SEO**: Integrate relevant keywords and highlight the key takeaways.
-                
-                5. **🔍 Keyword Optimization:**
-                   - Recommend the most effective keywords for improving the video's discoverability.
+                    -Craft a catchy heading and organize the description into clear, informative sections. Integrate relevant keywords and highlight key takeaways to enhance SEO and improve the video's discoverability.
                 
                 ---
                 
