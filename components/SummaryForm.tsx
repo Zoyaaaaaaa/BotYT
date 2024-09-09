@@ -23,7 +23,7 @@ const suggestedQuestions = [
     "Can you summarize the video?",
 ];
 
-export  default function SummaryForm() {
+export  default function YoutubeBot() {
     const [loading, setLoading] = useState(false);
     const [value, setValue] = useState("");
     const [summary, setSummary] = useState<string | null>(null);
@@ -237,11 +237,7 @@ export  default function SummaryForm() {
                 </div>
             </form>
 
-            {error && (
-                <div className="mt-4 p-4 bg-red-500 text-white rounded-lg">
-                    <p>{error}</p>
-                </div>
-            )}
+        
 
             {summary && (
                 <div className="mt-8 p-4 bg-gray-800 text-gray-300 rounded-lg">
