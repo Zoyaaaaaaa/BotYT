@@ -26,6 +26,17 @@ YoutubeBot brings the latest in AI technology to transform your YouTube experien
 
 ---
 
+
+
+
+### 🎥 Demo Video
+
+Here is a working demo of the web application:
+
+https://github.com/user-attachments/assets/07a808f5-341e-4d4b-86ad-5c28dbd3ea52
+
+
+
 ## 🎛️ Tech Stack
 
 - **Frontend**: Next.js + React, Tailwind CSS for UI design.
@@ -61,3 +72,4 @@ We’re excited to expand YoutubeBot’s capabilities to include:
 Give YoutubeBot a ⭐ on GitHub if you found it useful and join us in building a smarter way to consume video content!
 
 ---
+
