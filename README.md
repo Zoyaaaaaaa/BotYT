@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# 📹 YoutubeBot - AI-Powered Video Insight Generator 🤖
 
-First, run the development server:
+Welcome to **YoutubeBot**! This AI-powered app allows you to effortlessly gain insights, summaries, and keyword-based searches within any YouTube video. With a streamlined interface and advanced AI features, this tool is perfect for quickly understanding video content on any topic! 🎉
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 🔍 Smart Video Analysis
+- **📋 Get Video Summaries**: Paste a YouTube link or video ID, and YoutubeBot provides a concise summary.
+- **❓ Ask Custom Questions**: Enter questions about the video content to receive specific answers.
+- **🔑 Keyword Search**: Look up keywords within the transcript and jump to relevant parts of the video.
+- **⏰ Timestamped Search Results**: Easily navigate to important moments using clickable timestamps.
 
-## Learn More
+### 🎨 Aesthetic Interface
+- **🌌 Modern, Dark-Themed UI**: With a gradient, dark royal blue interface, the app provides a sleek, user-friendly experience.
+- **📱 Responsive Design**: Designed for mobile and desktop, making it accessible on all devices.
+- **✨ Elegant Button Effects**: Hover animations and color effects make it visually engaging.
 
-To learn more about Next.js, take a look at the following resources:
+### 🤖 AI-Driven Technology
+YoutubeBot brings the latest in AI technology to transform your YouTube experience:
+- **📝 Generative AI Summaries**: AI models generate natural-language summaries and answers.
+- **🔍 NLP-Based Transcript Search**: NLP-based keyword extraction ensures precise results within transcripts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 🎥 Demo Video
+
+Here is a working demo of the web application:
+
+https://github.com/user-attachments/assets/07a808f5-341e-4d4b-86ad-5c28dbd3ea52
+
+
+
+## 🎛️ Tech Stack
+
+- **Frontend**: Next.js + React, Tailwind CSS for UI design.
+- **Backend**: Node.js + TypeScript, REST API integration.
+- **AI Models**: Together AI, Google Generative AI, and OpenAI for transcript parsing and summarization.
+- **Other Libraries**:
+  - `@together-ai` for LLM-powered descriptions.
+  - `@ai-sdk/openai` for generating text-based insights.
+  - Custom React hooks and services for handling API requests.
+
+---
+
+## 🎯 How to Use
+
+1. **Input YouTube Video**: Enter a YouTube URL or video ID in the input field.
+2. **Choose Action**:
+   - Click **Generate Summary** for a concise overview.
+   - Click **Ask a Question** to get specific answers.
+   - Click **Search Transcript** to search by keywords.
+3. **View Results**: 
+   - A video summary will display, or click on timestamps in the search results to navigate to specific moments in the video.
+4. **Share Insights**: Copy insights or video links to easily share them with friends, colleagues, or social platforms!
+
+---
+
+## 💡 Future Plans
+
+We’re excited to expand YoutubeBot’s capabilities to include:
+- **🎤 Voice-based Queries**: Ask questions through voice for hands-free use.
+
+
+
+Give YoutubeBot a ⭐ on GitHub if you found it useful and join us in building a smarter way to consume video content!
+
+---
+
